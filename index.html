@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Azariah Onyx — Information Architect</title>
+<meta name="description" content="Information Architect & Documentation Strategist. Building AI-ready knowledge systems for enterprise SaaS."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#060D1A;--navy2:#0B1525;--navy3:#0F1E35;
+  --blue:#1B6CA8;--blue2:#2484CC;--blue3:#5BAEE0;
+  --teal:#00C2A8;
+  --fg:#E8EEF7;--fg2:#8FA3C0;--fg3:#4A6080;
+  --border:#152033;--border2:#1E3050;
+  --font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+  --r:10px;--r2:16px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--navy);color:var(--fg);overflow-x:hidden;cursor:none}
+a{text-decoration:none;color:inherit}
+#cur{position:fixed;width:8px;height:8px;background:var(--teal);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(0,194,168,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s}
+.hovering #cur-ring{width:48px;height:48px;border-color:var(--teal)}
+@keyframes sPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,194,168,.5)}50%{opacity:.7;box-shadow:0 0 0 6px rgba(0,194,168,0)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(6,13,26,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--mono);font-size:.75rem;font-weight:600;color:var(--fg);letter-spacing:.1em;text-transform:uppercase}
+.nav-status{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.65rem;color:var(--teal)}
+.nav-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:sPulse 2.4s ease infinite}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.78rem;font-weight:500;color:var(--fg3);transition:color .2s}
+.nav-links a:hover{color:var(--fg)}
+.nav-cta{font-family:var(--mono);font-size:.72rem;font-weight:600;padding:7px 16px;border:1px solid var(--blue);color:var(--blue3);border-radius:5px;transition:all .2s}
+.nav-cta:hover{background:var(--blue);color:#fff}
+section{padding:100px 5vw}
+.eyebrow{font-family:var(--mono);font-size:.68rem;color:var(--teal);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.85rem;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:'//';color:var(--fg3)}
+.s-title{font-size:clamp(1.8rem,4vw,2.75rem);font-weight:800;letter-spacing:-.025em;line-height:1.12;color:var(--fg);margin-bottom:.9rem}
+.s-sub{font-size:.975rem;color:var(--fg2);max-width:520px;line-height:1.75;margin-bottom:3rem}
+hr.div{border:none;border-top:1px solid var(--border)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-24px);transition:opacity .65s ease,transform .65s ease}
+.reveal-l.in{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal-r.in{opacity:1;transform:none}
+.stagger>*{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.stagger.in>*:nth-child(1){opacity:1;transform:none;transition-delay:.04s}
+.stagger.in>*:nth-child(2){opacity:1;transform:none;transition-delay:.10s}
+.stagger.in>*:nth-child(3){opacity:1;transform:none;transition-delay:.16s}
+.stagger.in>*:nth-child(4){opacity:1;transform:none;transition-delay:.22s}
+.stagger.in>*:nth-child(5){opacity:1;transform:none;transition-delay:.28s}
+.stagger.in>*:nth-child(6){opacity:1;transform:none;transition-delay:.34s}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr min(44vw,520px);align-items:center;padding:80px 5vw 60px;gap:4rem;position:relative;overflow:hidden}
+/* subtle grid */
+#hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(27,108,168,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(27,108,168,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 40% 50%,black,transparent);pointer-events:none;z-index:0}
+/* floating background canvas — data streams */
+#hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.55}
+.hero-left{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.68rem;color:var(--teal);letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(0,194,168,.25);background:rgba(0,194,168,.06);border-radius:100px;margin-bottom:1.8rem}
+.hero-badge-dot{width:5px;height:5px;background:var(--teal);border-radius:50%;animation:sPulse 2s ease infinite}
+h1.hero-title{font-size:clamp(2.6rem,5.5vw,5rem);font-weight:800;line-height:1.07;letter-spacing:-.03em;color:var(--fg);margin-bottom:1.6rem}
+.tline{display:block;overflow:hidden}
+.tline span{display:inline-block;transform:translateY(100%);animation:slideUp .8s cubic-bezier(.16,1,.3,1) forwards}
+.tline:nth-child(2) span{animation-delay:.1s}.tline:nth-child(3) span{animation-delay:.2s}
+@keyframes slideUp{to{transform:translateY(0)}}
+.tteal{color:var(--teal)}.tblue{color:var(--blue3)}
+.hero-sub{font-size:clamp(.92rem,1.6vw,1.08rem);color:var(--fg2);max-width:500px;line-height:1.75;margin-bottom:2.5rem;animation:fadeUp .8s .4s cubic-bezier(.16,1,.3,1) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero-actions{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2.5rem;animation:fadeUp .8s .5s cubic-bezier(.16,1,.3,1) both}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;font-size:.875rem;font-weight:600;background:var(--blue);color:#fff;border-radius:var(--r);border:1px solid var(--blue);transition:background .2s,transform .15s,box-shadow .2s}
+.btn-p:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(27,108,168,.4)}
+.btn-s{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;font-size:.875rem;font-weight:600;background:transparent;color:var(--fg2);border:1px solid var(--border2);border-radius:var(--r);transition:all .2s}
+.btn-s:hover{border-color:var(--blue3);color:var(--fg);transform:translateY(-2px)}
+/* Doc quality score widget */
+.hero-score{display:flex;flex-direction:column;gap:7px;margin-bottom:2.5rem;animation:fadeUp .8s .65s cubic-bezier(.16,1,.3,1) both;max-width:380px}
+.hs-label{font-family:var(--mono);font-size:.6rem;color:var(--fg3);text-transform:uppercase;letter-spacing:.1em;display:flex;justify-content:space-between;align-items:center}
+.hs-label span{color:var(--teal)}
+.hs-bar{height:4px;background:var(--border2);border-radius:2px;overflow:hidden}
+.hs-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--teal));transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+.hs-fill.go{transform:scaleX(1)}
+.hero-metrics{display:flex;gap:3rem;flex-wrap:wrap;animation:fadeUp .8s .8s cubic-bezier(.16,1,.3,1) both}
+.hm{border-left:2px solid var(--border2);padding-left:1.2rem}
+.hm-n{font-family:var(--mono);font-size:1.85rem;font-weight:700;color:var(--fg);line-height:1}
+.hm-n .t{color:var(--teal)}.hm-n .b{color:var(--blue3)}
+.hm-l{font-size:.7rem;color:var(--fg3);margin-top:4px}
+/* Hero right — rich SVG scene */
+.hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:center}
+#hero-scene{width:100%;max-width:520px;height:480px}
+/* floating doc fragment chips */
+.hero-frag{position:absolute;font-family:var(--mono);font-size:.6rem;color:rgba(91,174,224,.35);white-space:nowrap;pointer-events:none;z-index:1;letter-spacing:.05em}
+@media(max-width:960px){#hero{grid-template-columns:1fr}.hero-right{display:none}}
+
+/* ── ABOUT ── */
+#about{background:var(--navy2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-body{font-size:.96rem;color:var(--fg2);line-height:1.82}
+.about-body p+p{margin-top:1.1rem}
+.about-body strong{color:var(--fg)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.5rem}
+.chip{font-family:var(--mono);font-size:.65rem;padding:4px 11px;border:1px solid rgba(27,108,168,.3);color:var(--blue3);background:rgba(27,108,168,.07);border-radius:100px;transition:all .2s;cursor:default}
+.chip:hover{border-color:var(--blue);color:#fff;background:rgba(27,108,168,.2)}
+/* knowledge graph illustration area */
+.about-visual{position:relative;height:320px;display:flex;align-items:center;justify-content:center}
+.about-visual svg{width:100%;height:100%}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.1rem}
+.sk-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--r);padding:1.65rem;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.sk-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.sk-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.sk-card:hover::before{transform:scaleX(1)}
+.sk-icon{font-size:1.3rem;margin-bottom:.9rem}
+.sk-name{font-size:.875rem;font-weight:700;color:var(--fg);margin-bottom:.8rem}
+.sk-items{display:flex;flex-direction:column;gap:4px}
+.sk-item{font-size:.76rem;color:var(--fg3);display:flex;align-items:baseline;gap:7px;transition:color .2s}
+.sk-item::before{content:'›';color:var(--teal);flex-shrink:0}
+.sk-card:hover .sk-item{color:var(--fg2)}
+
+/* ── EXPERIENCE ── */
+#exp{background:var(--navy2)}
+.exp-list{display:flex;flex-direction:column}
+.exp-row{display:grid;grid-template-columns:180px 1fr;gap:3rem;padding:2.5rem 0;border-bottom:1px solid var(--border);position:relative}
+.exp-row:last-child{border-bottom:none}
+.exp-row::before{content:'';position:absolute;left:179px;top:0;bottom:0;width:1px;background:var(--border)}
+.exp-row::after{content:'';position:absolute;left:174px;top:2.6rem;width:11px;height:11px;background:var(--teal);border-radius:50%;box-shadow:0 0 0 3px var(--navy2),0 0 14px rgba(0,194,168,.5);animation:sPulse 3s ease infinite}
+.exp-row:not(:first-child)::after{background:var(--blue);box-shadow:0 0 0 3px var(--navy2);animation:none}
+.exp-period{font-family:var(--mono);font-size:.68rem;color:var(--teal);margin-bottom:.4rem;font-weight:500}
+.exp-co{font-size:.85rem;font-weight:700;color:var(--fg)}
+.exp-loc{font-size:.7rem;color:var(--fg3);margin-top:2px}
+.exp-role{font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:.65rem}
+.exp-ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.exp-ul li{font-size:.825rem;color:var(--fg3);padding-left:16px;position:relative;line-height:1.65;transition:color .2s}
+.exp-ul li::before{content:'▸';position:absolute;left:0;color:var(--blue3);font-size:.62rem;top:4px}
+.exp-row:hover .exp-ul li{color:var(--fg2)}
+
+/* ── CASE STUDIES ── */
+#cs{}
+.cs-banner{background:linear-gradient(135deg,var(--navy3) 0%,rgba(27,108,168,.08) 100%);border:1px solid var(--border2);border-radius:var(--r2);padding:2.5rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:3rem;overflow:hidden;position:relative}
+.cs-banner::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(0,194,168,.06),transparent 70%)}
+.cs-banner-visual{flex-shrink:0;width:140px;height:140px}
+.cs-banner-body{flex:1}
+.cs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.cs-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--r2);padding:2rem;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s;position:relative;overflow:hidden}
+.cs-card::before{content:'';position:absolute;top:-100%;left:0;right:0;height:60%;background:linear-gradient(180deg,transparent,rgba(27,108,168,.05),transparent);transition:top .5s ease;pointer-events:none}
+.cs-card:hover{transform:translateY(-4px);border-color:rgba(27,108,168,.4);box-shadow:0 16px 48px rgba(0,0,0,.35)}
+.cs-card:hover::before{top:150%}
+.cs-tag2{display:inline-block;font-family:var(--mono);font-size:.62rem;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;padding:3px 10px;background:rgba(0,194,168,.1);border:1px solid rgba(0,194,168,.2);border-radius:100px;margin-bottom:.9rem}
+.cs-title{font-size:1.1rem;font-weight:700;color:var(--fg);margin-bottom:.65rem;line-height:1.3}
+.cs-desc{font-size:.82rem;color:var(--fg3);line-height:1.7;margin-bottom:1.5rem}
+.cs-nums{display:flex;gap:1.5rem}
+.cs-n{font-family:var(--mono);font-size:1.3rem;font-weight:700;color:var(--blue3)}
+.cs-nl{font-size:.65rem;color:var(--fg3);margin-top:1px}
+.cs-arrow{position:absolute;bottom:1.4rem;right:1.6rem;font-size:.85rem;color:var(--teal);opacity:0;transition:opacity .2s,transform .2s}
+.cs-card:hover .cs-arrow{opacity:1;transform:translateX(4px)}
+
+/* ── AI SECTION ── */
+#ai{background:var(--navy2)}
+.ai-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.ai-pipeline-visual{width:100%;margin-bottom:2rem}
+.ai-tools-list{display:flex;flex-direction:column;gap:.85rem}
+.ai-row{display:flex;gap:1rem;align-items:flex-start;background:var(--navy3);border:1px solid var(--border);border-radius:var(--r);padding:1.15rem;transition:border-color .2s,transform .2s}
+.ai-row:hover{border-color:rgba(0,194,168,.3);transform:translateX(4px)}
+.ai-ico{width:36px;height:36px;flex-shrink:0;border-radius:8px;background:rgba(27,108,168,.15);border:1px solid rgba(27,108,168,.2);display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.ai-name{font-size:.855rem;font-weight:600;color:var(--fg);margin-bottom:3px}
+.ai-desc{font-size:.76rem;color:var(--fg3);line-height:1.6}
+/* demo panel */
+.ai-demo{background:var(--navy3);border:1px solid var(--border2);border-radius:var(--r2);overflow:hidden}
+.demo-header{padding:.9rem 1.2rem;background:var(--navy2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.demo-title{font-family:var(--mono);font-size:.7rem;color:var(--fg3)}
+.demo-badge{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.62rem;color:var(--teal)}
+.demo-badge-dot{width:5px;height:5px;background:var(--teal);border-radius:50%;animation:sPulse 2s infinite}
+.demo-body{padding:1.25rem 1.4rem;min-height:220px}
+.demo-doc-title{font-size:.9rem;font-weight:700;color:var(--fg);margin-bottom:.85rem;border-bottom:1px solid var(--border);padding-bottom:.75rem}
+.demo-lines{display:flex;flex-direction:column;gap:.45rem}
+.demo-line{font-size:.78rem;color:var(--fg2);line-height:1.6;min-height:1.2em}
+.demo-line.heading{color:var(--blue3);font-weight:600;font-size:.82rem}
+.demo-line.dim{color:var(--fg3)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.demo-tag{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:.58rem;font-weight:500;color:var(--teal);background:rgba(0,194,168,.1);border:1px solid rgba(0,194,168,.25);padding:2px 7px;border-radius:100px;margin-left:8px;vertical-align:middle;opacity:0;animation:tagIn .4s ease forwards}
+@keyframes tagIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.demo-tag::before{content:'✓';font-size:.55rem}
+
+/* ── IA SECTION ── */
+.ia-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.ia-principles{display:flex;flex-direction:column;gap:1rem}
+.ia-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;transition:border-color .2s,transform .2s}
+.ia-card:hover{border-color:rgba(27,108,168,.35);transform:translateX(4px)}
+.ia-num{font-family:var(--mono);font-size:.62rem;font-weight:600;color:var(--blue3);padding:2px 7px;background:rgba(27,108,168,.1);display:inline-block;border-radius:4px;margin-bottom:.6rem}
+.ia-t{font-size:.875rem;font-weight:700;color:var(--fg);margin-bottom:.35rem}
+.ia-d{font-size:.76rem;color:var(--fg3);line-height:1.6}
+
+/* ── CONTACT ── */
+#contact{text-align:center;position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--blue),var(--teal),transparent)}
+.contact-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(27,108,168,.08),transparent 70%);pointer-events:none}
+.contact-inner{position:relative;z-index:2;max-width:600px;margin:0 auto}
+.contact-visual{width:200px;height:80px;margin:0 auto 2rem}
+.contact-links{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem}
+.c-link{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;font-size:.8rem;font-weight:600;border:1px solid var(--border2);color:var(--fg2);border-radius:6px;font-family:var(--mono);letter-spacing:.04em;transition:all .2s}
+.c-link:hover{border-color:var(--blue3);color:var(--fg);background:rgba(27,108,168,.08)}
+.c-link.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.c-link.primary:hover{background:var(--blue2);box-shadow:0 6px 24px rgba(27,108,168,.35)}
+.c-link.resume-btn{border-color:rgba(0,194,168,.35);color:var(--teal)}
+.c-link.resume-btn:hover{border-color:var(--teal);background:rgba(0,194,168,.08);color:var(--teal)}
+footer{padding:1.6rem 5vw;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-family:var(--mono);font-size:.65rem;color:var(--fg3)}
+/* MODAL */
+.modal-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(4,10,20,.88);backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:2rem}
+.modal-bg.open{display:flex}
+.modal{background:var(--navy2);border:1px solid var(--border2);border-radius:16px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:2.5rem;position:relative}
+.modal-x{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;cursor:none;color:var(--fg3);font-size:1.1rem;transition:color .2s;font-family:var(--mono)}
+.modal-x:hover{color:var(--fg)}
+.modal h2{font-size:1.4rem;font-weight:800;color:var(--fg);margin:.5rem 0 1.5rem}
+.ms{margin-top:1.4rem}.ms h3{font-family:var(--mono);font-size:.64rem;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.55rem}
+.ms p{font-size:.855rem;color:var(--fg2);line-height:1.75}
+.ms ul{list-style:none;margin-top:.5rem;display:flex;flex-direction:column;gap:5px}
+.ms ul li{font-size:.835rem;color:var(--fg2);padding-left:16px;position:relative;line-height:1.65}
+.ms ul li::before{content:'▸';position:absolute;left:0;color:var(--blue3);font-size:.6rem;top:4px}
+.m-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:.75rem}
+.m-nb{background:var(--navy3);border:1px solid var(--border);border-radius:8px;padding:.9rem;text-align:center}
+.m-nn{font-family:var(--mono);font-size:1.35rem;font-weight:700;color:var(--teal)}
+.m-nl{font-size:.65rem;color:var(--fg3);margin-top:2px}
+@media(max-width:768px){.about-grid,.ai-wrap,.cs-grid,.ia-wrap{grid-template-columns:1fr;gap:2rem}.exp-row{grid-template-columns:1fr;gap:.5rem}.exp-row::before,.exp-row::after{display:none}.nav-links{display:none}}
+
+/* ── RESUME SECTION ── */
+#resume{background:var(--navy2)}
+.resume-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+.resume-download-card{background:var(--navy3);border:1px solid var(--border2);border-radius:var(--r2);padding:2rem;text-align:center;position:sticky;top:80px}
+.resume-preview-icon{width:80px;height:100px;margin:0 auto 1.5rem;position:relative}
+.resume-preview-icon svg{width:100%;height:100%}
+.resume-dl-title{font-size:1rem;font-weight:700;color:var(--fg);margin-bottom:.4rem}
+.resume-dl-sub{font-size:.78rem;color:var(--fg3);margin-bottom:1.75rem;line-height:1.6}
+.btn-dl{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px 0;font-size:.875rem;font-weight:700;background:var(--blue);color:#fff;border-radius:var(--r);border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;font-family:var(--font);letter-spacing:.02em;text-decoration:none}
+.btn-dl:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(27,108,168,.4)}
+.btn-dl-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 0;font-size:.82rem;font-weight:600;background:transparent;color:var(--fg3);border:1px solid var(--border2);border-radius:var(--r);cursor:pointer;transition:all .2s;font-family:var(--mono);letter-spacing:.04em;margin-top:.75rem;text-decoration:none}
+.btn-dl-ghost:hover{border-color:var(--teal);color:var(--teal)}
+.resume-meta{display:flex;justify-content:center;gap:1.5rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.resume-meta-item{font-family:var(--mono);font-size:.62rem;color:var(--fg3);text-align:center}
+.resume-meta-item span{display:block;color:var(--teal);font-size:.78rem;font-weight:600;margin-bottom:2px}
+/* resume highlights right column */
+.resume-highlights{display:flex;flex-direction:column;gap:2rem}
+.rh-group{}
+.rh-group-label{font-family:var(--mono);font-size:.65rem;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.85rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.rh-group-label::before{content:'';width:18px;height:1px;background:var(--teal)}
+.rh-items{display:flex;flex-direction:column;gap:.6rem}
+.rh-item{display:flex;align-items:flex-start;gap:.75rem;font-size:.84rem;color:var(--fg2);line-height:1.6}
+.rh-item::before{content:'▸';color:var(--blue3);font-size:.65rem;margin-top:.25rem;flex-shrink:0}
+.rh-certs{display:flex;flex-wrap:wrap;gap:.5rem}
+.rh-cert{font-family:var(--mono);font-size:.65rem;padding:4px 10px;border:1px solid var(--border2);color:var(--fg3);border-radius:5px;transition:all .2s}
+.rh-cert:hover{border-color:var(--blue3);color:var(--blue3)}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur-ring"></div>
+
+<nav>
+  <div class="nav-logo">Azariah Onyx</div>
+  <div class="nav-status"><div class="nav-dot"></div>Available for opportunities</div>
+  <div class="nav-links">
+    <a href="#about">About</a><a href="#skills">Skills</a><a href="#exp">Experience</a>
+    <a href="#cs">Work</a><a href="#ai">AI</a><a href="#contact" class="nav-cta">Connect</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════ HERO -->
+<section id="hero">
+  <!-- Background: floating data-stream canvas -->
+  <canvas id="hero-bg"></canvas>
+
+  <div class="hero-left">
+    <div class="hero-badge"><div class="hero-badge-dot"></div>Information Architect &amp; Documentation Strategist</div>
+    <h1 class="hero-title">
+      <span class="tline"><span>I build knowledge</span></span>
+      <span class="tline"><span>systems that <span class="tteal">ship</span></span></span>
+      <span class="tline"><span class="tblue">products faster.</span></span>
+    </h1>
+    <p class="hero-sub">7+ years designing AI-ready documentation, developer experiences, and knowledge infrastructure for enterprise SaaS. Where information architecture meets the retrieval era.</p>
+    <div class="hero-actions">
+      <a href="#cs" class="btn-p">View Case Studies →</a>
+      <a href="#contact" class="btn-s">Let's work together</a>
+    </div>
+
+    <!-- Doc quality score bars — animate in on load -->
+    <div class="hero-score">
+      <div><div class="hs-label">RAG Retrievability <span>98%</span></div><div class="hs-bar"><div class="hs-fill" style="--w:.98"></div></div></div>
+      <div><div class="hs-label">Structure Score <span>96%</span></div><div class="hs-bar"><div class="hs-fill" style="--w:.96"></div></div></div>
+      <div><div class="hs-label">Hallucination Resistance <span>100%</span></div><div class="hs-bar"><div class="hs-fill" style="--w:1.0"></div></div></div>
+      <div><div class="hs-label">Clarity Index <span>94%</span></div><div class="hs-bar"><div class="hs-fill" style="--w:.94"></div></div></div>
+    </div>
+
+    <div class="hero-metrics">
+      <div class="hm"><div class="hm-n"><span class="count" data-t="7">0</span><span class="t">+</span></div><div class="hm-l">Years in enterprise SaaS</div></div>
+      <div class="hm"><div class="hm-n"><span class="count" data-t="3">0</span></div><div class="hm-l">AI tools built</div></div>
+      <div class="hm"><div class="hm-n"><span class="b">∞</span></div><div class="hm-l">Support tickets prevented</div></div>
+    </div>
+  </div>
+
+  <!-- Right: Rich SVG illustration — document + AI orbit -->
+  <div class="hero-right">
+    <svg id="hero-scene" viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="hglow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="hglow2"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <linearGradient id="docGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(27,108,168,.18)"/>
+          <stop offset="100%" stop-color="rgba(11,21,37,.95)"/>
+        </linearGradient>
+      </defs>
+
+      <!-- === ORBIT RINGS === -->
+      <ellipse cx="260" cy="240" rx="195" ry="175" fill="none" stroke="rgba(27,108,168,.07)" stroke-width="1" stroke-dasharray="6,8"/>
+      <ellipse cx="260" cy="240" rx="145" ry="128" fill="none" stroke="rgba(27,108,168,.06)" stroke-width="1" stroke-dasharray="4,10"/>
+
+      <!-- === BACKGROUND GLOW === -->
+      <circle cx="260" cy="240" r="160" fill="radial-gradient(circle,rgba(27,108,168,.06),transparent)" opacity=".6">
+        <animate attributeName="r" values="150;170;150" dur="8s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".4;.7;.4" dur="8s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- === MAIN DOCUMENT === -->
+      <!-- Shadow/depth pages -->
+      <rect x="114" y="78" width="172" height="224" rx="8" fill="rgba(27,108,168,.06)" stroke="rgba(27,108,168,.15)" stroke-width="1"/>
+      <rect x="108" y="72" width="172" height="224" rx="8" fill="rgba(27,108,168,.08)" stroke="rgba(27,108,168,.2)" stroke-width="1"/>
+      <!-- Main page -->
+      <rect x="102" y="66" width="172" height="224" rx="8" fill="url(#docGrad)" stroke="rgba(91,174,224,.5)" stroke-width="1.5" filter="url(#hglow2)">
+        <animate attributeName="stroke-opacity" values=".5;.9;.5" dur="4s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Page header bar -->
+      <rect x="102" y="66" width="172" height="28" rx="8" fill="rgba(15,30,53,.9)" stroke="none"/>
+      <rect x="102" y="80" width="172" height="14" rx="0" fill="rgba(15,30,53,.9)" stroke="none"/>
+      <!-- Traffic light dots -->
+      <circle cx="116" cy="80" r="4" fill="#ff5f57"/><circle cx="129" cy="80" r="4" fill="#febc2e"/><circle cx="142" cy="80" r="4" fill="#28c840"/>
+      <!-- File name in header -->
+      <text x="188" y="84" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(143,163,192,.5)">docs · api-guide.md</text>
+
+      <!-- === DOC CONTENT LINES (animated writing) === -->
+      <!-- Heading 1 -->
+      <rect x="118" y="108" width="0" height="7" rx="2" fill="rgba(91,174,224,.8)">
+        <animate attributeName="width" values="0;88;88" dur="3s" begin=".5s" fill="freeze"/>
+      </rect>
+      <!-- Body lines -->
+      <rect x="118" y="124" width="0" height="4" rx="1" fill="rgba(143,163,192,.4)">
+        <animate attributeName="width" values="0;122;122" dur="2s" begin="1.2s" fill="freeze"/>
+      </rect>
+      <rect x="118" y="133" width="0" height="4" rx="1" fill="rgba(143,163,192,.4)">
+        <animate attributeName="width" values="0;98;98" dur="1.8s" begin="1.8s" fill="freeze"/>
+      </rect>
+      <rect x="118" y="142" width="0" height="4" rx="1" fill="rgba(143,163,192,.35)">
+        <animate attributeName="width" values="0;110;110" dur="2s" begin="2.2s" fill="freeze"/>
+      </rect>
+      <!-- Code block bg -->
+      <rect x="118" y="156" width="140" height="40" rx="4" fill="rgba(6,13,26,.8)" stroke="rgba(27,108,168,.2)" stroke-width="1" opacity="0">
+        <animate attributeName="opacity" values="0;1" dur=".3s" begin="2.8s" fill="freeze"/>
+      </rect>
+      <rect x="126" y="163" width="0" height="4" rx="1" fill="rgba(0,194,168,.7)">
+        <animate attributeName="width" values="0;100;100" dur="1.5s" begin="3s" fill="freeze"/>
+      </rect>
+      <rect x="126" y="174" width="0" height="4" rx="1" fill="rgba(0,194,168,.5)">
+        <animate attributeName="width" values="0;76;76" dur="1.2s" begin="3.6s" fill="freeze"/>
+      </rect>
+      <rect x="126" y="185" width="0" height="4" rx="1" fill="rgba(0,194,168,.4)">
+        <animate attributeName="width" values="0;88;88" dur="1.4s" begin="4s" fill="freeze"/>
+      </rect>
+      <!-- Heading 2 -->
+      <rect x="118" y="208" width="0" height="7" rx="2" fill="rgba(91,174,224,.7)">
+        <animate attributeName="width" values="0;70;70" dur="1.5s" begin="4.6s" fill="freeze"/>
+      </rect>
+      <!-- More body -->
+      <rect x="118" y="224" width="0" height="4" rx="1" fill="rgba(143,163,192,.35)">
+        <animate attributeName="width" values="0;130;130" dur="1.8s" begin="5s" fill="freeze"/>
+      </rect>
+      <rect x="118" y="233" width="0" height="4" rx="1" fill="rgba(143,163,192,.3)">
+        <animate attributeName="width" values="0;105;105" dur="1.6s" begin="5.4s" fill="freeze"/>
+      </rect>
+      <!-- Cursor blink at end -->
+      <rect x="226" y="232" width="2" height="7" rx="1" fill="var(--teal)" filter="url(#hglow2)">
+        <animate attributeName="opacity" values="1;0;1" dur=".9s" begin="7s" repeatCount="indefinite"/>
+        <animate attributeName="x" values="226;226" dur="99s" begin="5.4s" fill="freeze"/>
+      </rect>
+
+      <!-- === AI BRAIN NODE (top-right) === -->
+      <circle cx="378" cy="108" r="38" fill="rgba(0,194,168,.08)" stroke="rgba(0,194,168,.35)" stroke-width="1.5" filter="url(#hglow)">
+        <animate attributeName="r" values="36;40;36" dur="5s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-opacity" values=".35;.7;.35" dur="5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="378" cy="108" r="24" fill="rgba(0,194,168,.12)" stroke="rgba(0,194,168,.5)" stroke-width="1.5"/>
+      <!-- Brain-like neural connections inside -->
+      <circle cx="370" cy="104" r="3" fill="rgba(0,194,168,.7)"/>
+      <circle cx="386" cy="104" r="3" fill="rgba(0,194,168,.7)"/>
+      <circle cx="378" cy="116" r="3" fill="rgba(0,194,168,.7)"/>
+      <line x1="370" y1="104" x2="386" y2="104" stroke="rgba(0,194,168,.4)" stroke-width="1"/>
+      <line x1="370" y1="104" x2="378" y2="116" stroke="rgba(0,194,168,.4)" stroke-width="1"/>
+      <line x1="386" y1="104" x2="378" y2="116" stroke="rgba(0,194,168,.4)" stroke-width="1"/>
+      <line x1="378" y1="96" x2="378" y2="104" stroke="rgba(0,194,168,.3)" stroke-width="1"/>
+      <circle cx="378" cy="94" r="2.5" fill="rgba(0,194,168,.6)"/>
+      <text x="378" y="136" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(0,194,168,.6)" font-weight="600">AI ENGINE</text>
+
+      <!-- Connector: AI brain → doc -->
+      <path d="M348,126 Q310,150 285,155" fill="none" stroke="rgba(0,194,168,.3)" stroke-width="1.5" stroke-dasharray="4,5">
+        <animate attributeName="stroke-dashoffset" values="0;-18" dur="1.2s" repeatCount="indefinite"/>
+      </path>
+      <!-- Travelling dot on connector -->
+      <circle r="3" fill="var(--teal)" filter="url(#hglow2)" opacity=".9">
+        <animateMotion dur="2.4s" repeatCount="indefinite" path="M348,126 Q310,150 285,155"/>
+        <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- === FLOATING ANNOTATION BADGES === -->
+      <!-- Badge 1: RAG ✓ — orbits top -->
+      <g opacity="0"><animate attributeName="opacity" values="0;1" dur=".4s" begin="5.5s" fill="freeze"/>
+        <rect x="290" y="30" width="82" height="22" rx="11" fill="rgba(0,194,168,.12)" stroke="rgba(0,194,168,.5)" stroke-width="1" filter="url(#hglow2)"/>
+        <text x="331" y="45" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8.5" fill="#00C2A8" font-weight="600">✓ RAG-Ready</text>
+        <animateTransform attributeName="transform" type="translate" values="0,0;0,-4;0,0" dur="3.5s" begin="5.5s" repeatCount="indefinite"/>
+      </g>
+      <!-- Badge 2: Structured ✓ — floats right -->
+      <g opacity="0"><animate attributeName="opacity" values="0;1" dur=".4s" begin="6.2s" fill="freeze"/>
+        <rect x="310" y="200" width="90" height="22" rx="11" fill="rgba(27,108,168,.15)" stroke="rgba(91,174,224,.45)" stroke-width="1" filter="url(#hglow2)"/>
+        <text x="355" y="215" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8.5" fill="#5BAEE0" font-weight="600">✓ Structured</text>
+        <animateTransform attributeName="transform" type="translate" values="0,0;0,4;0,0" dur="4s" begin="6.2s" repeatCount="indefinite"/>
+      </g>
+      <!-- Badge 3: No ambiguity — floats bottom -->
+      <g opacity="0"><animate attributeName="opacity" values="0;1" dur=".4s" begin="6.9s" fill="freeze"/>
+        <rect x="270" y="330" width="118" height="22" rx="11" fill="rgba(0,194,168,.1)" stroke="rgba(0,194,168,.4)" stroke-width="1" filter="url(#hglow2)"/>
+        <text x="329" y="345" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8.5" fill="#00C2A8" font-weight="600">✓ Zero Ambiguity</text>
+        <animateTransform attributeName="transform" type="translate" values="0,0;0,-3;0,0" dur="4.5s" begin="6.9s" repeatCount="indefinite"/>
+      </g>
+      <!-- Badge 4: Hallucination-proof — left -->
+      <g opacity="0"><animate attributeName="opacity" values="0;1" dur=".4s" begin="7.5s" fill="freeze"/>
+        <rect x="22" y="220" width="72" height="34" rx="8" fill="rgba(27,108,168,.12)" stroke="rgba(27,108,168,.35)" stroke-width="1"/>
+        <text x="58" y="233" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#5BAEE0">Hallucination</text>
+        <text x="58" y="246" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#5BAEE0">✓ Proof</text>
+        <animateTransform attributeName="transform" type="translate" values="0,0;0,3;0,0" dur="5s" begin="7.5s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- === IA TAXONOMY MINI-TREE (bottom-left) === -->
+      <g opacity="0"><animate attributeName="opacity" values="0;1" dur=".6s" begin="3s" fill="freeze"/>
+        <!-- Root -->
+        <rect x="28" y="310" width="66" height="20" rx="5" fill="rgba(27,108,168,.15)" stroke="rgba(27,108,168,.4)" stroke-width="1"/>
+        <text x="61" y="324" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#5BAEE0">Docs Root</text>
+        <!-- Branch line -->
+        <line x1="61" y1="330" x2="61" y2="346" stroke="rgba(27,108,168,.3)" stroke-width="1"/>
+        <line x1="36" y1="346" x2="86" y2="346" stroke="rgba(27,108,168,.3)" stroke-width="1"/>
+        <!-- Leaf left -->
+        <line x1="36" y1="346" x2="36" y2="358" stroke="rgba(27,108,168,.3)" stroke-width="1"/>
+        <rect x="14" y="358" width="44" height="18" rx="4" fill="rgba(11,21,37,.9)" stroke="rgba(27,108,168,.3)" stroke-width="1"/>
+        <text x="36" y="371" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(143,163,192,.7)">Guides</text>
+        <!-- Leaf right -->
+        <line x1="86" y1="346" x2="86" y2="358" stroke="rgba(27,108,168,.3)" stroke-width="1"/>
+        <rect x="62" y="358" width="48" height="18" rx="4" fill="rgba(11,21,37,.9)" stroke="rgba(0,194,168,.3)" stroke-width="1"/>
+        <text x="86" y="371" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(0,194,168,.7)">Ref API</text>
+      </g>
+
+      <!-- === ORBITING DOTS on outer ring === -->
+      <circle r="4" fill="var(--teal)" filter="url(#hglow)" opacity=".8">
+        <animateMotion dur="12s" repeatCount="indefinite" path="M260,65 A195,175 0 1,1 259.9,65"/>
+      </circle>
+      <circle r="3" fill="var(--blue3)" filter="url(#hglow2)" opacity=".6">
+        <animateMotion dur="18s" repeatCount="indefinite" path="M260,65 A195,175 0 1,0 259.9,65"/>
+      </circle>
+
+      <!-- Radial tick marks on outer ring -->
+      <line x1="260" y1="64" x2="260" y2="72" stroke="rgba(27,108,168,.2)" stroke-width="1"/>
+      <line x1="454" y1="240" x2="446" y2="240" stroke="rgba(27,108,168,.2)" stroke-width="1"/>
+      <line x1="260" y1="416" x2="260" y2="408" stroke="rgba(27,108,168,.2)" stroke-width="1"/>
+      <line x1="66" y1="240" x2="74" y2="240" stroke="rgba(27,108,168,.2)" stroke-width="1"/>
+    </svg>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ══════════════════════════════════════════════════════ ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal-l">
+      <div class="eyebrow">Who I am</div>
+      <h2 class="s-title">I think in systems,<br/>write for humans.</h2>
+      <div class="about-body">
+        <p>I'm <strong>Azariah Onyx</strong>, an Information Architect and Documentation Strategist with 7+ years turning complex software into navigable, AI-ready knowledge.</p>
+        <p>My work spans <strong>enterprise SaaS</strong>, headless CMS, personalization platforms, API ecosystems, and data-driven developer tooling. I've owned the full documentation lifecycle — from taxonomy design to RAG-optimized content systems.</p>
+        <p>What sets me apart: documentation systems that <strong>actively reduce support escalations</strong>, accelerate onboarding, and serve as a strategic self-service layer.</p>
+        <div class="chips">
+          <span class="chip">Information Architecture</span><span class="chip">RAG-Ready Docs</span><span class="chip">API Documentation</span><span class="chip">Developer Experience</span><span class="chip">AI Inhibition</span><span class="chip">Content Strategy</span><span class="chip">Headless CMS</span><span class="chip">Docs-as-Code</span>
+        </div>
+      </div>
+    </div>
+    <!-- Animated knowledge graph illustration -->
+    <div class="about-visual reveal-r">
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+        <defs>
+          <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="rgba(27,108,168,.6)"/>
+          </marker>
+        </defs>
+        <!-- Background glow -->
+        <ellipse cx="200" cy="160" rx="160" ry="120" fill="none" stroke="rgba(27,108,168,.06)" stroke-width="1"/>
+        <ellipse cx="200" cy="160" rx="110" ry="80" fill="none" stroke="rgba(27,108,168,.06)" stroke-width="1"/>
+        <!-- Animated connection lines -->
+        <line x1="200" y1="160" x2="90" y2="80" stroke="rgba(27,108,168,.25)" stroke-width="1.5" marker-end="url(#arr)">
+          <animate attributeName="stroke-opacity" values=".1;.5;.1" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="200" y1="160" x2="310" y2="80" stroke="rgba(27,108,168,.25)" stroke-width="1.5" marker-end="url(#arr)">
+          <animate attributeName="stroke-opacity" values=".5;.1;.5" dur="3.5s" repeatCount="indefinite"/>
+        </line>
+        <line x1="200" y1="160" x2="80" y2="220" stroke="rgba(27,108,168,.25)" stroke-width="1.5" marker-end="url(#arr)">
+          <animate attributeName="stroke-opacity" values=".3;.6;.3" dur="2.8s" repeatCount="indefinite"/>
+        </line>
+        <line x1="200" y1="160" x2="320" y2="230" stroke="rgba(27,108,168,.25)" stroke-width="1.5" marker-end="url(#arr)">
+          <animate attributeName="stroke-opacity" values=".6;.2;.6" dur="4s" repeatCount="indefinite"/>
+        </line>
+        <line x1="200" y1="160" x2="200" y2="40" stroke="rgba(0,194,168,.3)" stroke-width="1.5" marker-end="url(#arr)">
+          <animate attributeName="stroke-opacity" values=".2;.7;.2" dur="2.5s" repeatCount="indefinite"/>
+        </line>
+        <line x1="200" y1="160" x2="200" y2="285" stroke="rgba(27,108,168,.2)" stroke-width="1.5" marker-end="url(#arr)">
+          <animate attributeName="stroke-opacity" values=".4;.1;.4" dur="3.2s" repeatCount="indefinite"/>
+        </line>
+        <!-- Satellite connections -->
+        <line x1="90" y1="80" x2="310" y2="80" stroke="rgba(27,108,168,.1)" stroke-width="1" stroke-dasharray="4,6"/>
+        <line x1="80" y1="220" x2="320" y2="230" stroke="rgba(27,108,168,.1)" stroke-width="1" stroke-dasharray="4,6"/>
+        <!-- Orbiting dot on path -->
+        <circle r="3" fill="var(--teal)" opacity=".8" filter="url(#glow)">
+          <animateMotion dur="6s" repeatCount="indefinite" path="M200,160 L90,80 L310,80 L320,230 L80,220 L200,285 L200,160"/>
+        </circle>
+        <!-- Central node -->
+        <circle cx="200" cy="160" r="30" fill="rgba(27,108,168,.15)" stroke="rgba(27,108,168,.5)" stroke-width="1.5" filter="url(#glow)">
+          <animate attributeName="r" values="28;32;28" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="160" r="18" fill="rgba(27,108,168,.25)" stroke="rgba(91,174,224,.6)" stroke-width="1"/>
+        <text x="200" y="156" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#5BAEE0" font-weight="600">INFO</text>
+        <text x="200" y="167" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#5BAEE0" font-weight="600">ARCH</text>
+        <!-- Satellite nodes -->
+        <!-- API Docs node -->
+        <circle cx="90" cy="80" r="22" fill="rgba(11,21,37,.9)" stroke="rgba(27,108,168,.4)" stroke-width="1.5">
+          <animate attributeName="stroke-opacity" values=".3;.8;.3" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <text x="90" y="77" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.5" fill="#8FA3C0">API</text>
+        <text x="90" y="87" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.5" fill="#8FA3C0">Docs</text>
+        <!-- RAG node -->
+        <circle cx="310" cy="80" r="22" fill="rgba(11,21,37,.9)" stroke="rgba(0,194,168,.4)" stroke-width="1.5">
+          <animate attributeName="stroke-opacity" values=".8;.3;.8" dur="3.5s" repeatCount="indefinite"/>
+        </circle>
+        <text x="310" y="77" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.5" fill="#00C2A8">RAG</text>
+        <text x="310" y="87" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.5" fill="#00C2A8">Ready</text>
+        <!-- IA node -->
+        <circle cx="200" cy="40" r="18" fill="rgba(11,21,37,.9)" stroke="rgba(91,174,224,.5)" stroke-width="1.5">
+          <animate attributeName="stroke-opacity" values=".2;.9;.2" dur="2.5s" repeatCount="indefinite"/>
+        </circle>
+        <text x="200" y="37" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="#5BAEE0">Taxo</text>
+        <text x="200" y="47" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="#5BAEE0">nomy</text>
+        <!-- KB node -->
+        <circle cx="80" cy="220" r="22" fill="rgba(11,21,37,.9)" stroke="rgba(27,108,168,.4)" stroke-width="1.5">
+          <animate attributeName="stroke-opacity" values=".6;.2;.6" dur="2.8s" repeatCount="indefinite"/>
+        </circle>
+        <text x="80" y="217" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.5" fill="#8FA3C0">Self</text>
+        <text x="80" y="227" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.5" fill="#8FA3C0">Svc</text>
+        <!-- AI node -->
+        <circle cx="320" cy="230" r="22" fill="rgba(11,21,37,.9)" stroke="rgba(0,194,168,.4)" stroke-width="1.5">
+          <animate attributeName="stroke-opacity" values=".2;.7;.2" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <text x="320" y="227" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.5" fill="#00C2A8">AI</text>
+        <text x="320" y="237" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.5" fill="#00C2A8">Tools</text>
+        <!-- DX node -->
+        <circle cx="200" cy="285" r="18" fill="rgba(11,21,37,.9)" stroke="rgba(27,108,168,.3)" stroke-width="1.5">
+          <animate attributeName="stroke-opacity" values=".4;.9;.4" dur="3.2s" repeatCount="indefinite"/>
+        </circle>
+        <text x="200" y="282" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="#8FA3C0">Dev</text>
+        <text x="200" y="292" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="#8FA3C0">Exp</text>
+        <!-- Floating particles -->
+        <circle cx="150" cy="130" r="2" fill="rgba(0,194,168,.4)">
+          <animate attributeName="cx" values="150;160;150" dur="5s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="130;120;130" dur="5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".2;.7;.2" dur="5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="255" cy="140" r="2" fill="rgba(91,174,224,.4)">
+          <animate attributeName="cx" values="255;245;255" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="140;150;140" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".5;.1;.5" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="180" cy="200" r="1.5" fill="rgba(27,108,168,.6)">
+          <animate attributeName="cx" values="180;190;180" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="cy" values="200;190;200" dur="6s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+  </div>
+</section>
+<hr class="div"/>
+
+<!-- ══════════════════════════════════════════════════════ SKILLS -->
+<section id="skills">
+  <div class="reveal"><div class="eyebrow">Capabilities</div>
+  <h2 class="s-title">Built across every layer<br/>of the docs stack.</h2>
+  <p class="s-sub">From authoring tools to AI pipelines — end-to-end documentation strategy and execution.</p></div>
+  <div class="skills-grid stagger">
+    <div class="sk-card"><div class="sk-icon">🏗️</div><div class="sk-name">Information Architecture</div><div class="sk-items"><div class="sk-item">Navigation &amp; taxonomy design</div><div class="sk-item">Content hierarchy &amp; IA mapping</div><div class="sk-item">Troubleshooting library systems</div><div class="sk-item">Discoverability optimization</div><div class="sk-item">Cognitive load reduction</div></div></div>
+    <div class="sk-card"><div class="sk-icon">⚡</div><div class="sk-name">API &amp; Developer Docs</div><div class="sk-items"><div class="sk-item">RESTful API reference documentation</div><div class="sk-item">SDK &amp; webhook documentation</div><div class="sk-item">Event-based tracking guides</div><div class="sk-item">Postman collection authoring</div><div class="sk-item">Developer onboarding journeys</div></div></div>
+    <div class="sk-card"><div class="sk-icon">🤖</div><div class="sk-name">AI &amp; Automation</div><div class="sk-items"><div class="sk-item">RAG-optimized documentation</div><div class="sk-item">AI inhibition &amp; hallucination prevention</div><div class="sk-item">Prompt engineering for content</div><div class="sk-item">MCP server / tool development</div><div class="sk-item">Custom GPT &amp; AI workflow design</div></div></div>
+    <div class="sk-card"><div class="sk-icon">✍️</div><div class="sk-name">Authoring &amp; Tooling</div><div class="sk-items"><div class="sk-item">Contentstack CMS, Confluence</div><div class="sk-item">MadCap Flare, Oxygen XML, FrameMaker</div><div class="sk-item">Markdown, DITA, HTML, JSON</div><div class="sk-item">GitHub, SVN, Perforce</div><div class="sk-item">Snagit, Camtasia (visual docs)</div></div></div>
+    <div class="sk-card"><div class="sk-icon">📊</div><div class="sk-name">Strategy &amp; Governance</div><div class="sk-items"><div class="sk-item">Content strategy &amp; roadmapping</div><div class="sk-item">Style guide ownership</div><div class="sk-item">Support-driven content updates</div><div class="sk-item">Cross-functional team collaboration</div><div class="sk-item">Release-driven documentation cycles</div></div></div>
+    <div class="sk-card"><div class="sk-icon">🐍</div><div class="sk-name">Technical Skills</div><div class="sk-items"><div class="sk-item">Python (tooling, analysis, automation)</div><div class="sk-item">JSON, XML, structured data authoring</div><div class="sk-item">Jira, SAP, Slack-based workflows</div><div class="sk-item">UI flow validation &amp; QA</div><div class="sk-item">Agile &amp; SDLC documentation</div></div></div>
+  </div>
+</section>
+<hr class="div"/>
+
+<!-- ══════════════════════════════════════════════════════ EXPERIENCE -->
+<section id="exp">
+  <div class="reveal"><div class="eyebrow">Career</div>
+  <h2 class="s-title">Seven years of<br/>documentation leadership.</h2></div>
+  <div class="exp-list reveal">
+    <div class="exp-row">
+      <div><div class="exp-period">Mar 2025 – Present</div><div class="exp-co">Contentstack</div><div class="exp-loc">Remote, India</div></div>
+      <div><div class="exp-role">Information Architect</div><ul class="exp-ul">
+        <li>Led IA redesign for Lytics App and Personalize platform — restructuring navigation, taxonomy, and content hierarchy for the docs portal</li>
+        <li>Designed and implemented a centralized Common Issues / Troubleshooting Library, enabling self-service resolution and reducing support escalations</li>
+        <li>Applied AI-inhibition principles corpus-wide — eliminating ambiguity, enforcing deterministic structure to prevent hallucinations</li>
+        <li>Built a Docs Intelligence MCP tool (FastMCP, ChromaDB, sentence-transformers) — demoed as a shippable product feature</li>
+        <li>Used AI-powered analysis of support tickets and Slack logs to surface and prioritize high-impact documentation gaps</li>
+      </ul></div>
+    </div>
+    <div class="exp-row">
+      <div><div class="exp-period">Dec 2022 – Mar 2025</div><div class="exp-co">Opentext</div><div class="exp-loc">Remote, India</div></div>
+      <div><div class="exp-role">Technical Writer II</div><ul class="exp-ul">
+        <li>Developed and maintained user guides, API documentation, online help systems, release notes, and FAQs for enterprise SaaS products</li>
+        <li>Standardized API documentation templates for cross-team consistency and navigability</li>
+        <li>Collaborated with global cross-functional teams to maintain accuracy and release cadence</li>
+        <li>Organized, audited, and gap-analyzed documentation repositories with Git and SVN</li>
+      </ul></div>
+    </div>
+    <div class="exp-row">
+      <div><div class="exp-period">Sep 2018 – Dec 2022</div><div class="exp-co">Sonovision Aetos</div><div class="exp-loc">Ortec Group</div></div>
+      <div><div class="exp-role">Technical Writer</div><ul class="exp-ul">
+        <li>Translated complex API functionality into clear developer documentation for external audiences</li>
+        <li>Managed API versioning — backward compatibility communications and changelogs</li>
+        <li>Created interactive guides and video tutorials, improving user engagement</li>
+        <li>Conducted peer reviews and mentored junior technical writers</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+<hr class="div"/>
+
+<!-- ══════════════════════════════════════════════════════ CASE STUDIES -->
+<section id="cs">
+  <div class="reveal"><div class="eyebrow">Work</div>
+  <h2 class="s-title">Documentation as<br/>a product decision.</h2>
+  <p class="s-sub">Each project traces from a real problem to a documented, measurable outcome.</p></div>
+
+  <!-- Featured case study banner with animated SVG illustration -->
+  <div class="cs-banner reveal">
+    <div class="cs-banner-visual">
+      <!-- Animated doc flow SVG -->
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow2"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- Document pages stacked -->
+        <rect x="30" y="25" width="60" height="75" rx="4" fill="rgba(27,108,168,.12)" stroke="rgba(27,108,168,.4)" stroke-width="1.5">
+          <animate attributeName="y" values="25;20;25" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-opacity" values=".4;.9;.4" dur="4s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="35" y="30" width="60" height="75" rx="4" fill="rgba(27,108,168,.1)" stroke="rgba(27,108,168,.35)" stroke-width="1.5">
+          <animate attributeName="y" values="30;25;30" dur="4s" begin=".3s" repeatCount="indefinite"/>
+        </rect>
+        <!-- Top document (active) -->
+        <rect x="40" y="35" width="60" height="75" rx="4" fill="rgba(11,21,37,.95)" stroke="rgba(91,174,224,.6)" stroke-width="1.5">
+          <animate attributeName="stroke-opacity" values=".6;1;.6" dur="3s" repeatCount="indefinite"/>
+        </rect>
+        <!-- Document lines -->
+        <line x1="50" y1="50" x2="90" y2="50" stroke="rgba(91,174,224,.7)" stroke-width="1.5" stroke-linecap="round">
+          <animate attributeName="x2" values="65;90;65" dur="2.5s" repeatCount="indefinite"/>
+        </line>
+        <line x1="50" y1="60" x2="85" y2="60" stroke="rgba(143,163,192,.4)" stroke-width="1" stroke-linecap="round">
+          <animate attributeName="x2" values="85;72;85" dur="3s" begin=".5s" repeatCount="indefinite"/>
+        </line>
+        <line x1="50" y1="68" x2="88" y2="68" stroke="rgba(143,163,192,.4)" stroke-width="1" stroke-linecap="round">
+          <animate attributeName="x2" values="75;88;75" dur="2.8s" begin=".2s" repeatCount="indefinite"/>
+        </line>
+        <line x1="50" y1="76" x2="78" y2="76" stroke="rgba(143,163,192,.3)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="50" y1="84" x2="82" y2="84" stroke="rgba(143,163,192,.3)" stroke-width="1" stroke-linecap="round"/>
+        <!-- AI check badge -->
+        <circle cx="90" cy="100" r="12" fill="rgba(0,194,168,.15)" stroke="rgba(0,194,168,.7)" stroke-width="1.5" filter="url(#glow2)">
+          <animate attributeName="r" values="11;13;11" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <text x="90" y="104" text-anchor="middle" font-size="10" fill="#00C2A8" font-weight="700">✓</text>
+      </svg>
+    </div>
+    <div class="cs-banner-body">
+      <div class="cs-tag2" style="margin-bottom:.6rem">Featured Work</div>
+      <div class="cs-title" style="font-size:1.3rem;margin-bottom:.5rem">Lytics App Documentation System Redesign</div>
+      <div class="cs-desc" style="margin-bottom:1rem">Led end-to-end migration from legacy Data Activation Layer architecture to a new standalone doc system — restructuring navigation, taxonomy, and content hierarchy for the Contentstack docs portal. The core IA principle: separate product architecture from documentation architecture.</div>
+      <div class="cs-nums">
+        <div><div class="cs-n">8</div><div class="cs-nl">Doc tiers redesigned</div></div>
+        <div><div class="cs-n">↓</div><div class="cs-nl">Reader cognitive load</div></div>
+        <div><div class="cs-n">↑</div><div class="cs-nl">Discoverability</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-grid stagger">
+    <div class="cs-card" onclick="openM('m2')"><div class="cs-tag2">AI Systems</div><div class="cs-title">Contentstack Docs Intelligence MCP Tool</div><div class="cs-desc">Built a same-day MCP server using FastMCP, ChromaDB, and sentence-transformers that generates production-ready Personalize API and SDK code examples from the documentation corpus.</div><div class="cs-nums"><div><div class="cs-n">1</div><div class="cs-nl">Day to demo</div></div><div><div class="cs-n">RAG</div><div class="cs-nl">Grounded output</div></div></div><div class="cs-arrow">→</div></div>
+    <div class="cs-card" onclick="openM('m3')"><div class="cs-tag2">Self-Service Infrastructure</div><div class="cs-title">Common Issues / Troubleshooting Library</div><div class="cs-desc">Transformed recurring support pain points — surfaced via AI analysis of tickets and Slack logs — into a centralized, structured KB-style self-service library.</div><div class="cs-nums"><div><div class="cs-n">↓</div><div class="cs-nl">Escalations</div></div><div><div class="cs-n">↑</div><div class="cs-nl">Self-service rate</div></div></div><div class="cs-arrow">→</div></div>
+    <div class="cs-card" onclick="openM('m4')"><div class="cs-tag2">AI-Enabled Quality</div><div class="cs-title">RAG Health Score Generator</div><div class="cs-desc">Internal AI tool scoring documentation across 5 quality dimensions with line-level feedback — flagging hallucination risk before any article enters the retrieval pipeline.</div><div class="cs-nums"><div><div class="cs-n">5</div><div class="cs-nl">Dimensions scored</div></div><div><div class="cs-n">Line</div><div class="cs-nl">Level precision</div></div></div><div class="cs-arrow">→</div></div>
+  </div>
+</section>
+<hr class="div"/>
+
+<!-- ══════════════════════════════════════════════════════ AI SECTION -->
+<section id="ai">
+  <div class="ai-wrap">
+    <div class="reveal-l">
+      <div class="eyebrow">AI &amp; Innovation</div>
+      <h2 class="s-title">I don't just write<br/>about AI. I build<br/>with it.</h2>
+      <p style="font-size:.94rem;color:var(--fg2);line-height:1.82;margin-bottom:2rem">Contentstack's docs portal runs a live Ask AI chatbot. I own the content layer — every article structured so it retrieves accurately, answers completely, and never contradicts itself under inference.</p>
+      <!-- AI pipeline illustration -->
+      <svg class="ai-pipeline-visual" viewBox="0 0 480 90" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow3"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <marker id="arr2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+            <path d="M0,0 L0,5 L5,2.5 z" fill="rgba(0,194,168,.7)"/>
+          </marker>
+        </defs>
+        <!-- Stage boxes -->
+        <!-- 1: Raw Docs -->
+        <rect x="2" y="22" width="72" height="44" rx="6" fill="rgba(27,108,168,.12)" stroke="rgba(27,108,168,.45)" stroke-width="1.5"/>
+        <text x="38" y="41" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#5BAEE0" font-weight="600">Raw</text>
+        <text x="38" y="53" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#5BAEE0" font-weight="600">Docs</text>
+        <!-- Arrow 1 -->
+        <line x1="75" y1="44" x2="100" y2="44" stroke="rgba(0,194,168,.5)" stroke-width="1.5" marker-end="url(#arr2)">
+          <animate attributeName="stroke-opacity" values=".2;.9;.2" dur="1.8s" repeatCount="indefinite"/>
+        </line>
+        <!-- Moving dot 1 -->
+        <circle cx="75" cy="44" r="3" fill="var(--teal)" filter="url(#glow3)">
+          <animate attributeName="cx" values="75;100;75" dur="1.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0;1" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+        <!-- 2: IA Structure -->
+        <rect x="102" y="22" width="80" height="44" rx="6" fill="rgba(27,108,168,.12)" stroke="rgba(27,108,168,.45)" stroke-width="1.5"/>
+        <text x="142" y="41" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#5BAEE0" font-weight="600">IA +</text>
+        <text x="142" y="53" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#5BAEE0" font-weight="600">Structure</text>
+        <!-- Arrow 2 -->
+        <line x1="183" y1="44" x2="208" y2="44" stroke="rgba(0,194,168,.5)" stroke-width="1.5" marker-end="url(#arr2)">
+          <animate attributeName="stroke-opacity" values=".9;.2;.9" dur="1.8s" repeatCount="indefinite"/>
+        </line>
+        <circle cx="183" cy="44" r="3" fill="var(--teal)" filter="url(#glow3)">
+          <animate attributeName="cx" values="183;208;183" dur="1.8s" begin=".6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0;1" dur="1.8s" begin=".6s" repeatCount="indefinite"/>
+        </circle>
+        <!-- 3: AI Inhibition -->
+        <rect x="210" y="22" width="82" height="44" rx="6" fill="rgba(0,194,168,.1)" stroke="rgba(0,194,168,.5)" stroke-width="1.5"/>
+        <text x="251" y="41" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#00C2A8" font-weight="600">AI-</text>
+        <text x="251" y="53" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#00C2A8" font-weight="600">Inhibition</text>
+        <!-- Arrow 3 -->
+        <line x1="293" y1="44" x2="318" y2="44" stroke="rgba(0,194,168,.5)" stroke-width="1.5" marker-end="url(#arr2)">
+          <animate attributeName="stroke-opacity" values=".2;.9;.2" dur="1.8s" begin=".3s" repeatCount="indefinite"/>
+        </line>
+        <circle cx="293" cy="44" r="3" fill="var(--teal)" filter="url(#glow3)">
+          <animate attributeName="cx" values="293;318;293" dur="1.8s" begin="1.2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0;1" dur="1.8s" begin="1.2s" repeatCount="indefinite"/>
+        </circle>
+        <!-- 4: Embeddings -->
+        <rect x="320" y="22" width="76" height="44" rx="6" fill="rgba(27,108,168,.12)" stroke="rgba(27,108,168,.45)" stroke-width="1.5"/>
+        <text x="358" y="41" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#5BAEE0" font-weight="600">Vector</text>
+        <text x="358" y="53" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#5BAEE0" font-weight="600">Embed</text>
+        <!-- Arrow 4 -->
+        <line x1="397" y1="44" x2="422" y2="44" stroke="rgba(0,194,168,.5)" stroke-width="1.5" marker-end="url(#arr2)">
+          <animate attributeName="stroke-opacity" values=".9;.2;.9" dur="1.8s" begin=".9s" repeatCount="indefinite"/>
+        </line>
+        <circle cx="397" cy="44" r="3" fill="var(--teal)" filter="url(#glow3)">
+          <animate attributeName="cx" values="397;422;397" dur="1.8s" begin="1.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0;1" dur="1.8s" begin="1.8s" repeatCount="indefinite"/>
+        </circle>
+        <!-- 5: AI Ready -->
+        <rect x="424" y="16" width="54" height="56" rx="6" fill="rgba(0,194,168,.15)" stroke="rgba(0,194,168,.7)" stroke-width="1.5" filter="url(#glow3)">
+          <animate attributeName="stroke-opacity" values=".7;1;.7" dur="2s" repeatCount="indefinite"/>
+        </rect>
+        <text x="451" y="40" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#00C2A8" font-weight="700">RAG</text>
+        <text x="451" y="52" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#00C2A8" font-weight="700">Ready</text>
+        <!-- Labels -->
+        <text x="38" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(74,96,128,.7)">01</text>
+        <text x="142" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(74,96,128,.7)">02</text>
+        <text x="251" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(74,96,128,.7)">03</text>
+        <text x="358" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(74,96,128,.7)">04</text>
+        <text x="451" y="80" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(0,194,168,.6)">05</text>
+      </svg>
+      <div class="ai-tools-list">
+        <div class="ai-row"><div class="ai-ico">🧠</div><div><div class="ai-name">Docs Intelligence MCP Server</div><div class="ai-desc">FastMCP + ChromaDB + sentence-transformers. Generates Personalize API/SDK code examples from the live docs corpus. Same-day demo → shippable product feature.</div></div></div>
+        <div class="ai-row"><div class="ai-ico">📊</div><div><div class="ai-name">RAG Health Score Generator</div><div class="ai-desc">Scores docs on 5 dimensions with line-level feedback. Flags hallucination risk before articles enter the AI pipeline.</div></div></div>
+        <div class="ai-row"><div class="ai-ico">🔗</div><div><div class="ai-name">Broken Link Crawler</div><div class="ai-desc">Automated detection of dead links across a large-scale portal before they degrade AI retrieval quality.</div></div></div>
+        <div class="ai-row"><div class="ai-ico">⚡</div><div><div class="ai-name">Salesforce Flow → Slack Automation</div><div class="ai-desc">Real-time alerts when qualifying support cases close — closing the loop between signals and documentation updates.</div></div></div>
+      </div>
+    </div>
+    <div class="reveal-r">
+      <div class="ai-demo">
+        <div class="demo-header">
+          <div class="demo-title">ai-writer · contentstack-docs</div>
+          <div class="demo-badge"><div class="demo-badge-dot"></div>generating</div>
+        </div>
+        <div class="demo-body">
+          <div class="demo-doc-title">Troubleshooting: SDK — Session Identity</div>
+          <div class="demo-lines" id="demo-lines"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="div"/>
+
+<!-- ══════════════════════════════════════════════════════ IA SECTION -->
+<section id="ia">
+  <div class="ia-wrap">
+    <div class="reveal-l">
+      <div class="eyebrow">Information Architecture</div>
+      <h2 class="s-title">The invisible design<br/>that makes docs work.</h2>
+      <p class="s-sub" style="margin-bottom:0">Most technical writers ignore IA. I lead with it. Every system I build is architected before it's authored.</p>
+    </div>
+    <!-- IA pyramid / hierarchy illustration -->
+    <div class="reveal-r" style="display:flex;align-items:center;justify-content:center">
+      <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px">
+        <defs>
+          <filter id="glow4"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- Tier 1 (top — narrowest) -->
+        <polygon points="180,20 230,70 130,70" fill="rgba(0,194,168,.18)" stroke="rgba(0,194,168,.7)" stroke-width="1.5" filter="url(#glow4)">
+          <animate attributeName="stroke-opacity" values=".7;1;.7" dur="3s" repeatCount="indefinite"/>
+        </polygon>
+        <text x="180" y="52" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#00C2A8" font-weight="600">Conceptual</text>
+        <!-- Tier 2 -->
+        <polygon points="130,78 230,78 255,128 105,128" fill="rgba(27,108,168,.15)" stroke="rgba(27,108,168,.55)" stroke-width="1.5">
+          <animate attributeName="stroke-opacity" values=".55;.9;.55" dur="3.5s" begin=".5s" repeatCount="indefinite"/>
+        </polygon>
+        <text x="180" y="108" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#5BAEE0" font-weight="600">Task Guides</text>
+        <!-- Tier 3 -->
+        <polygon points="105,136 255,136 285,192 75,192" fill="rgba(27,108,168,.12)" stroke="rgba(27,108,168,.45)" stroke-width="1.5">
+          <animate attributeName="stroke-opacity" values=".45;.8;.45" dur="4s" begin=".3s" repeatCount="indefinite"/>
+        </polygon>
+        <text x="180" y="169" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#8FA3C0" font-weight="600">API Reference</text>
+        <!-- Tier 4 (base — widest) -->
+        <polygon points="75,200 285,200 320,260 40,260" fill="rgba(11,21,37,.8)" stroke="rgba(27,108,168,.35)" stroke-width="1.5"/>
+        <text x="180" y="235" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#4A6080" font-weight="600">Troubleshooting Library</text>
+        <!-- Animated scan line moving down the pyramid -->
+        <line x1="40" y1="0" x2="320" y2="0" stroke="rgba(0,194,168,.3)" stroke-width="1">
+          <animate attributeName="y1" values="20;260;20" dur="5s" repeatCount="indefinite"/>
+          <animate attributeName="y2" values="20;260;20" dur="5s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-opacity" values="0;.4;0" dur="5s" repeatCount="indefinite"/>
+          <animate attributeName="x1" values="180;40;180" dur="5s" repeatCount="indefinite"/>
+          <animate attributeName="x2" values="180;320;180" dur="5s" repeatCount="indefinite"/>
+        </line>
+        <!-- Level labels on right -->
+        <text x="330" y="52" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(0,194,168,.5)">L1</text>
+        <text x="330" y="108" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(91,174,224,.5)">L2</text>
+        <text x="330" y="165" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(143,163,192,.4)">L3</text>
+        <text x="330" y="234" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(74,96,128,.5)">L4</text>
+        <!-- Reader entry arrow -->
+        <line x1="20" y1="20" x2="110" y2="20" stroke="rgba(0,194,168,.3)" stroke-width="1" stroke-dasharray="3,4"/>
+        <text x="10" y="17" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(0,194,168,.5)" text-anchor="middle">↓</text>
+        <text x="10" y="26" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(0,194,168,.4)" text-anchor="middle">In</text>
+        <!-- AI retrieval arrow at base -->
+        <line x1="20" y1="260" x2="38" y2="260" stroke="rgba(91,174,224,.3)" stroke-width="1" stroke-dasharray="3,4"/>
+        <text x="10" y="257" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(91,174,224,.4)" text-anchor="middle">AI</text>
+        <text x="10" y="266" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(91,174,224,.4)" text-anchor="middle">↑</text>
+      </svg>
+    </div>
+  </div>
+  <!-- IA principles below -->
+  <div class="ia-principles stagger" style="margin-top:3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+    <div class="ia-card"><div class="ia-num">01</div><div class="ia-t">Reader Goal First</div><div class="ia-d">Navigation designed around what the reader wants to accomplish — not how the product team organized features.</div></div>
+    <div class="ia-card"><div class="ia-num">02</div><div class="ia-t">Deterministic Terminology</div><div class="ia-d">Every concept has exactly one name. Synonyms are the primary cause of AI hallucinations and user confusion alike.</div></div>
+    <div class="ia-card"><div class="ia-num">03</div><div class="ia-t">Tiered Architecture</div><div class="ia-d">Overviews → task guides → reference → troubleshooting, each with defined entry points and clear exit paths.</div></div>
+    <div class="ia-card"><div class="ia-num">04</div><div class="ia-t">AI-Inhibition by Design</div><div class="ia-d">Structural elimination of vague phrasing ensures documents resolve predictably under AI retrieval.</div></div>
+    <div class="ia-card"><div class="ia-num">05</div><div class="ia-t">Support-Driven Iteration</div><div class="ia-d">Documentation gaps live in support tickets. AI-assisted analysis surfaces problems that feed directly into the IA.</div></div>
+    <div class="ia-card"><div class="ia-num">06</div><div class="ia-t">Scalable Taxonomy</div><div class="ia-d">Labeling and categorization systems that survive product growth and migrations without full restructures.</div></div>
+  </div>
+</section>
+<hr class="div"/>
+
+<!-- ══════════════════════════════════════════════════════ CONTACT -->
+<section id="contact">
+  <div class="contact-glow"></div>
+  <div class="contact-inner reveal">
+    <!-- Animated signature / wave SVG -->
+    <div class="contact-visual">
+      <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+        <!-- Animated writing path — stylised "AO" signature -->
+        <path d="M10,60 Q30,20 50,40 Q60,52 70,30 Q80,10 90,40 L110,40" fill="none" stroke="rgba(27,108,168,.3)" stroke-width="1.5" stroke-dasharray="200" stroke-dashoffset="200">
+          <animate attributeName="stroke-dashoffset" values="200;0" dur="2s" fill="freeze"/>
+        </path>
+        <path d="M120,30 Q140,10 155,40 Q165,60 175,30 Q182,15 190,35" fill="none" stroke="rgba(0,194,168,.5)" stroke-width="1.5" stroke-dasharray="150" stroke-dashoffset="150">
+          <animate attributeName="stroke-dashoffset" values="150;0" dur="1.5s" begin="1.5s" fill="freeze"/>
+        </path>
+        <!-- Endpoint glow dot -->
+        <circle cx="190" cy="35" r="3" fill="var(--teal)" opacity="0" filter="url(#glow4)">
+          <animate attributeName="opacity" values="0;1" dur=".3s" begin="3s" fill="freeze"/>
+          <animate attributeName="r" values="3;5;3" dur="2s" begin="3s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Horizontal base line -->
+        <line x1="5" y1="65" x2="195" y2="65" stroke="rgba(27,108,168,.15)" stroke-width="1" stroke-dasharray="190" stroke-dashoffset="190">
+          <animate attributeName="stroke-dashoffset" values="190;0" dur="1s" begin=".5s" fill="freeze"/>
+        </line>
+      </svg>
+    </div>
+    <div class="eyebrow" style="justify-content:center">Let's talk</div>
+    <h2 class="s-title" style="font-size:clamp(1.8rem,4vw,3rem)">Open to senior<br/>documentation roles.</h2>
+    <p style="font-size:.975rem;color:var(--fg2);line-height:1.75;margin-top:.7rem">Looking for opportunities where documentation strategy, information architecture, and AI-enabled content systems are treated as product decisions — not afterthoughts.</p>
+    <div class="contact-links">
+      <a href="mailto:onyxajr@gmail.com" class="c-link primary">✉ onyxajr@gmail.com</a>
+      <a href="Azariah_Onyx_Resume.pdf" download="Azariah_Onyx_Resume.pdf" class="c-link resume-btn">↓ Download Resume</a>
+      <a href="https://linkedin.com/in/azariah-onyx" target="_blank" class="c-link">LinkedIn →</a>
+      <a href="https://github.com/azariah-onyx" target="_blank" class="c-link">GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Azariah Onyx · Information Architect</span>
+  <span>Bengaluru, 2025</span>
+</footer>
+
+<!-- MODALS (unchanged content) -->
+<div class="modal-bg" id="m2"><div class="modal"><button class="modal-x" onclick="closeM('m2')">✕</button><div class="cs-tag2">AI Systems</div><h2>Contentstack Docs Intelligence MCP Tool</h2><div class="ms"><h3>Challenge</h3><p>The Personalize API and SDK documentation lacked production-ready code examples across key use cases — audience targeting, A/B test setup, conversion tracking, and session identity merging.</p></div><div class="ms"><h3>What I Built</h3><ul><li>FastMCP for the server layer</li><li>ChromaDB for vector storage and semantic retrieval</li><li>sentence-transformers for embedding generation</li><li>Integrated with Claude and other LLM clients via MCP protocol</li><li>Generates examples for audience targeting, A/B testing, conversion tracking, session identity merging</li></ul></div><div class="ms"><h3>Strategic Positioning</h3><p>Demoed to the technical manager as a shippable product feature — positioning the documentation team as a source of AI tooling for developer experience, not just content maintenance.</p></div><div class="ms"><h3>Impact</h3><div class="m-nums"><div class="m-nb"><div class="m-nn">1</div><div class="m-nl">Day to demo</div></div><div class="m-nb"><div class="m-nn">RAG</div><div class="m-nl">Grounded output</div></div><div class="m-nb"><div class="m-nn">↑</div><div class="m-nl">Dev onboarding</div></div></div></div></div></div>
+<div class="modal-bg" id="m3"><div class="modal"><button class="modal-x" onclick="closeM('m3')">✕</button><div class="cs-tag2">Self-Service Infrastructure</div><h2>Common Issues / Troubleshooting Library</h2><div class="ms"><h3>Challenge</h3><p>Support teams fielded the same recurring issues repeatedly with no consolidated documentation home.</p></div><div class="ms"><h3>Approach</h3><ul><li>AI-assisted analysis of support tickets and Slack logs to identify recurring problem clusters</li><li>Grouped problems by service, severity, and resolution pattern</li><li>Authored reusable KB-style articles with consistent problem/cause/resolution structure</li><li>Applied deterministic terminology to ensure AI retrieval accuracy</li></ul></div><div class="ms"><h3>Impact</h3><div class="m-nums"><div class="m-nb"><div class="m-nn">↓</div><div class="m-nl">Support escalations</div></div><div class="m-nb"><div class="m-nn">↑</div><div class="m-nl">Self-service rate</div></div><div class="m-nb"><div class="m-nn">↑</div><div class="m-nl">AI accuracy</div></div></div></div></div></div>
+<div class="modal-bg" id="m4"><div class="modal"><button class="modal-x" onclick="closeM('m4')">✕</button><div class="cs-tag2">AI-Enabled Quality</div><h2>RAG Health Score Generator</h2><div class="ms"><h3>Challenge</h3><p>Documentation quality for AI retrieval is invisible until it fails. No systematic way to assess hallucination risk before publishing.</p></div><div class="ms"><h3>What I Built</h3><ul><li>Structure — heading hierarchy, section completeness, formatting consistency</li><li>Retrievability — keyword density, metadata, semantic clarity</li><li>Clarity — sentence complexity, passive voice, ambiguous references</li><li>Completeness — coverage gaps, missing steps, undefined terms</li><li>Hallucination-Resistance — ambiguity score, contradictions, vague assertions</li></ul></div><div class="ms"><h3>Impact</h3><div class="m-nums"><div class="m-nb"><div class="m-nn">5</div><div class="m-nl">Quality dimensions</div></div><div class="m-nb"><div class="m-nn">Line</div><div class="m-nl">Level precision</div></div><div class="m-nb"><div class="m-nn">↓</div><div class="m-nl">Hallucination risk</div></div></div></div></div></div>
+
+<script>
+/* CURSOR */
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+document.addEventListener('mouseover',e=>{
+  document.body.classList.toggle('hovering',!!e.target.closest('a,button,.cs-card,.sk-card,.ai-row,.ia-card,.cs-banner'));
+});
+(function loop(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+
+/* HERO BACKGROUND CANVAS — floating data streams */
+(function(){
+  const cv=document.getElementById('hero-bg');if(!cv)return;
+  const ctx=cv.getContext('2d');let W,H;
+  function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight}
+  resize();window.addEventListener('resize',resize);
+
+  // Floating text fragments — docs/code snippets that drift upward
+  const FRAGS=[
+    'const cs = Contentstack.init(','identify({ userId })','## Authentication',
+    'RAG-optimized','→ Structured','✓ Zero Ambiguity','information_architecture',
+    'taxonomy.build()','sdk.version = "3.2"','retrieval_score: 0.98',
+    '## Session Identity','hallucination_risk: 0','deterministic: true',
+    'cs.track("conversion")','audience.segment(rules)','A/B test variant B',
+  ];
+  const streams=Array.from({length:18},(_,i)=>({
+    x: Math.random()*1.2-0.1,        // fraction of W
+    y: Math.random(),                  // fraction of H
+    vy: -(0.00008+Math.random()*0.00012), // upward speed (fraction/ms)
+    text: FRAGS[i%FRAGS.length],
+    alpha: Math.random()*0.18+0.04,
+    size: 9+Math.random()*4,
+    hue: Math.random()>.6?'rgba(0,194,168,':'rgba(91,174,224,',
+  }));
+
+  // Diagonal beam lines
+  const beams=Array.from({length:6},()=>({
+    x: Math.random(),
+    speed: 0.00005+Math.random()*0.00008,
+    alpha: 0.03+Math.random()*0.04,
+    width: 1+Math.random(),
+  }));
+
+  let last=0;
+  function draw(ts){
+    const dt=ts-last;last=ts;
+    ctx.clearRect(0,0,W,H);
+    ctx.font=`400 11px 'JetBrains Mono',monospace`;
+
+    // Diagonal beams
+    beams.forEach(b=>{
+      b.x=(b.x+b.speed*dt)%1.4-0.2;
+      const sx=b.x*W, sy=0, ex=(b.x+0.6)*W, ey=H;
+      const g=ctx.createLinearGradient(sx,sy,ex,ey);
+      g.addColorStop(0,'rgba(27,108,168,0)');
+      g.addColorStop(.4,`rgba(27,108,168,${b.alpha})`);
+      g.addColorStop(1,'rgba(27,108,168,0)');
+      ctx.strokeStyle=g;ctx.lineWidth=b.width;
+      ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(ex,ey);ctx.stroke();
+    });
+
+    // Drifting text fragments
+    streams.forEach(s=>{
+      s.y+=s.vy*dt;
+      if(s.y<-0.05){s.y=1.05;s.x=Math.random()*1.2-0.1;}
+      ctx.font=`400 ${s.size}px 'JetBrains Mono',monospace`;
+      ctx.fillStyle=s.hue+s.alpha+')';
+      ctx.fillText(s.text,s.x*W,s.y*H);
+    });
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* HERO SCORE BARS — animate in after 700ms */
+setTimeout(()=>{
+  document.querySelectorAll('.hs-fill').forEach((el,i)=>{
+    setTimeout(()=>{
+      const w=parseFloat(el.style.getPropertyValue('--w')||1);
+      el.style.transitionDelay=i*0.12+'s';
+      el.classList.add('go');
+      el.style.transform=`scaleX(${w})`;
+    },i*120);
+  });
+},700);
+
+/* AI DEMO WRITER */
+(function(){
+  const el=document.getElementById('demo-lines');if(!el)return;
+  const content=[
+    {cls:'heading',text:'## Overview'},
+    {cls:'',text:'This issue occurs when identify()'},
+    {cls:'',text:'is called before SDK initialisation.'},
+    {cls:'dim',text:''},
+    {cls:'heading',text:'## Root Cause'},
+    {cls:'',text:'Session token is set asynchronously.'},
+    {cls:'',text:'Calling identify() synchronously'},
+    {cls:'',text:'causes the merge to fail silently.'},
+    {cls:'dim',text:''},
+    {cls:'heading',text:'## Resolution'},
+    {cls:'',text:'Await init() before calling identify().'},
+    {cls:'',text:'See SDK reference §3.2.'},
+  ];
+  const TAGS=['RAG-optimized','Structured','Deterministic'];
+  let li=0,started=false,divs=[];
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting&&!started){started=true;run()}})
+  },{threshold:.4});
+  obs.observe(el);
+  function run(){
+    if(li>=content.length){
+      TAGS.forEach((tag,i)=>{
+        setTimeout(()=>{
+          const d=divs[Math.max(0,divs.length-3+i)];if(!d)return;
+          const t=document.createElement('span');t.className='demo-tag';t.textContent=tag;d.appendChild(t);
+        },i*350);
+      });
+      setTimeout(clearAll,3500);return;
+    }
+    const line=content[li];
+    const d=document.createElement('div');
+    d.className='demo-line '+(line.cls||'');d.textContent='';
+    el.appendChild(d);divs.push(d);
+    typeIn(d,line.text,()=>{li++;setTimeout(run,line.cls==='dim'?60:35)});
+  }
+  function typeIn(el,text,cb){
+    if(!text){cb();return}
+    let i=0;const iv=setInterval(()=>{el.textContent=text.slice(0,++i);if(i>=text.length){clearInterval(iv);cb()}},16);
+  }
+  function clearAll(){
+    [...el.children].reverse().forEach((c,i)=>{
+      setTimeout(()=>{c.style.transition='opacity .18s';c.style.opacity='0';setTimeout(()=>c.remove(),200)},i*25);
+    });
+    setTimeout(()=>{divs=[];li=0;run()},[...el.children].length*25+400);
+  }
+})();
+
+/* COUNTERS */
+const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){
+  document.querySelectorAll('.count').forEach(el=>{
+    const t=+el.dataset.t;let v=0;const iv=setInterval(()=>{v=Math.min(v+1,t);el.textContent=v;if(v>=t)clearInterval(iv)},50);
+  });co.disconnect();
+}})},{threshold:.6});
+const hm=document.querySelector('.hero-metrics');if(hm)co.observe(hm);
+
+/* SCROLL REVEALS */
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.stagger').forEach(el=>ro.observe(el));
+
+/* MODALS */
+function openM(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
+function closeM(id){document.getElementById(id).classList.remove('open');document.body.style.overflow=''}
+document.querySelectorAll('.modal-bg').forEach(el=>{
+  el.addEventListener('click',e=>{if(e.target===el){el.classList.remove('open');document.body.style.overflow=''}});
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')document.querySelectorAll('.modal-bg.open').forEach(el=>{el.classList.remove('open');document.body.style.overflow=''});
+});
+</script>
+</body>
+</html>
