@@ -1,0 +1,27 @@
+name: Build portfolio resume PDF
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/resume_source.md"
+      - ".github/scripts/build_resume.py"
+      - ".github/workflows/build-resume.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-resume:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install reportlab
+      - run: python .github/scripts/build_resume.py
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Publish updated portfolio resume PDF"
+          file_pattern: resume.pdf
