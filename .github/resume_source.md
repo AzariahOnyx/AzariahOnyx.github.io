@@ -61,3 +61,4 @@ Certifications: API Technical Writing (Udemy) | Technical Writing with DITA XML 
 
 ## SELECTED WRITING SAMPLES
 Contentstack Personalize | Contentstack Lytics | Contentstack Launch | OpenText DRA | OpenText GPA | Sentinel
+
