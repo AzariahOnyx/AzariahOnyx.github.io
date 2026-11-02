@@ -1,6 +1,6 @@
 # AZARIAH ONYX
 Senior Technical Writer | Information Development | AI Automation | Content Strategy
-+91-814-808-8953 | onyxajr@gmail.com | Bengaluru, India | LinkedIn | Portfolio | GitHub
++91-814-808-8953 | [onyxajr@gmail.com](mailto:onyxajr@gmail.com) | Bengaluru, India | [LinkedIn](https://linkedin.com/in/onyx-aj) | [Portfolio](https://azariahonyx.github.io/) | [GitHub](https://github.com/AzariahOnyx)
 
 ## PROFESSIONAL SUMMARY
 Senior Technical Writer and Information Developer with 8+ years of experience leading end-to-end documentation for enterprise SaaS. Skilled in AI-driven content automation, structured authoring, API and developer documentation, docs-as-code, UX writing, and information architecture. Mentor to technical writers, with experience establishing content standards, monitoring documentation quality, and partnering with Engineering, Product, and Design throughout Agile delivery.
@@ -40,8 +40,8 @@ Senior Technical Writer and Information Developer with 8+ years of experience le
 - Validated technical instructions with SMEs and mentored junior writers through peer review, constructive feedback, and improvements to readability and accuracy.
 
 ## SELECTED DOCUMENTATION & AI INITIATIVES
-- **AI Documentation Automation:** Developed reusable AI agent skills for source-grounded documentation impact analysis, drafting, proofreading, and verification with configurable workflows, evidence traceability, Python quality checks, CI testing, and human approval.
-- **AI Search Readiness & Content Retrievability:** Built EMETIVRA, a live Markdown documentation and BM25 retrieval evaluation app with heading-aware chunking, before/after comparisons, and Precision@K, Recall@K, MRR, and nDCG metrics.
+- **AI Documentation Automation:** Developed reusable [DocForge Skills](https://github.com/AzariahOnyx/docforge-skills) for source-grounded documentation impact analysis, drafting, proofreading, and verification with configurable workflows, evidence traceability, Python quality checks, CI testing, and human approval.
+- **AI Search Readiness & Content Retrievability:** Built [EMETIVRA](https://emetivra.vercel.app) ([GitHub](https://github.com/AzariahOnyx/emetivra)), a live Markdown documentation and BM25 retrieval evaluation app with heading-aware chunking, before/after comparisons, and Precision@K, Recall@K, MRR, and nDCG metrics.
 - **Common Issues Library:** Designed an Extractor–Writer–Verifier workflow to convert verified customer-support cases into reusable troubleshooting articles with source traceability and editorial quality checks.
 - **Content Standards, UX & Localization:** Applied information architecture, content models, templates, terminology, UI guidance, and localization-ready writing principles to improve discoverability and content consistency.
 
@@ -60,5 +60,5 @@ B.Sc. Computer Science | Vinayaka Missions University
 Certifications: API Technical Writing (Udemy) | Technical Writing with DITA XML (Udemy) | Project Leadership (PMI) | Google Cloud Foundations (LinkedIn)
 
 ## SELECTED WRITING SAMPLES
-Contentstack Personalize | Contentstack Lytics | Contentstack Launch | OpenText DRA | OpenText GPA | Sentinel
+[Contentstack Personalize](https://www.contentstack.com/docs/personalize) | [Contentstack Lytics](https://www.contentstack.com/docs/lytics) | [Contentstack Launch](https://www.contentstack.com/docs/developers/sdks) | [OpenText DRA](https://www.microfocus.com/documentation/directory-and-resource-administrator/10.2/) | OpenText GPA | [Sentinel](https://docs.microfocus.com/doc/SELM/24.4/c1_b122o79f)
 
