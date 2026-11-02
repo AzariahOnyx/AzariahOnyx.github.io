@@ -253,6 +253,30 @@ footer{padding:1.6rem 5vw;border-top:1px solid var(--border);display:flex;justif
 .rh-certs{display:flex;flex-wrap:wrap;gap:.5rem}
 .rh-cert{font-family:var(--mono);font-size:.65rem;padding:4px 10px;border:1px solid var(--border2);color:var(--fg3);border-radius:5px;transition:all .2s}
 .rh-cert:hover{border-color:var(--blue3);color:var(--blue3)}
+
+/* Portfolio project and writing sample additions */
+.project-section{background:var(--navy)}
+.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.project-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--r2);padding:1.8rem;overflow:hidden}
+.project-card h3{font-size:1.05rem;color:var(--fg);margin:.65rem 0}
+.project-card p{font-size:.82rem;line-height:1.7;color:var(--fg2)}
+.project-card .project-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.2rem;font-family:var(--mono);font-size:.7rem;color:var(--teal)}
+.project-card .project-links a:hover{color:var(--blue3);text-decoration:underline}
+.project-flow{display:flex;align-items:stretch;gap:6px;margin:1.2rem 0;flex-wrap:wrap}
+.project-flow span{flex:1;min-width:90px;background:var(--navy3);border:1px solid var(--border2);border-radius:6px;padding:9px 7px;text-align:center;font: .62rem var(--mono);color:var(--blue3)}
+.project-flow span b{display:block;color:var(--teal);font-size:.55rem;margin-bottom:4px}
+.architecture{margin:1.1rem 0 0;background:#081323;border:1px solid var(--border2);border-radius:10px;padding:12px}
+.architecture svg{display:block;width:100%;height:auto}
+.sample-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.sample-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem;transition:transform .2s,border-color .2s}
+.sample-card:hover{transform:translateY(-3px);border-color:var(--blue)}
+.sample-card h3{font-size:.9rem;color:var(--fg);margin-bottom:.45rem}
+.sample-card p{font-size:.74rem;color:var(--fg3);line-height:1.6;min-height:3.7em}
+.sample-card a{display:inline-block;margin-top:.9rem;font: .65rem var(--mono);color:var(--teal)}
+.sample-note{font-size:.72rem;color:var(--fg3);line-height:1.6;margin-top:1rem}
+@media(max-width:768px){.project-grid{grid-template-columns:1fr}.sample-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.sample-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -263,7 +287,7 @@ footer{padding:1.6rem 5vw;border-top:1px solid var(--border);display:flex;justif
   <div class="nav-status"><div class="nav-dot"></div>Available for opportunities</div>
   <div class="nav-links">
     <a href="#about">About</a><a href="#skills">Skills</a><a href="#exp">Experience</a>
-    <a href="#cs">Work</a><a href="#ai">AI</a><a href="#contact" class="nav-cta">Connect</a>
+    <a href="#cs">Work</a><a href="#projects">AI Projects</a><a href="#writing-samples">Writing Samples</a><a href="#ai">AI</a><a href="#contact" class="nav-cta">Connect</a>
   </div>
 </nav>
 
@@ -879,6 +903,72 @@ footer{padding:1.6rem 5vw;border-top:1px solid var(--border);display:flex;justif
 </section>
 <hr class="div"/>
 
+
+<!-- FEATURED AI DOCUMENTATION ENGINEERING PROJECTS -->
+<section id="projects" class="project-section">
+  <div class="reveal">
+    <div class="eyebrow">Featured engineering work</div>
+    <h2 class="s-title">From documentation craft<br/>to documentation systems.</h2>
+    <p class="s-sub">Two hands-on projects exploring source-grounded content generation and measurable retrieval quality. Each project links to its code and live experience where available.</p>
+  </div>
+  <div class="project-grid stagger">
+    <article class="project-card">
+      <div class="cs-tag2">Documentation automation · Agent Skills</div>
+      <h3>DocForge Skills — Source-grounded documentation workflow</h3>
+      <p>A reusable, agent-assisted workflow that transforms an approved product specification into reviewable documentation. It separates source analysis, drafting, and proofing so claims remain traceable and unsupported details are surfaced instead of invented.</p>
+      <div class="project-flow" aria-label="DocForge workflow">
+        <span><b>01</b>Source intake</span><span><b>02</b>Analyzer</span><span><b>03</b>Evidence handover</span><span><b>04</b>Drafter</span><span><b>05</b>Coverage</span><span><b>06</b>Proofreader</span><span><b>07</b>Human approval</span>
+      </div>
+      <p><strong>Capabilities:</strong> feature guides, task how-tos, release notes, and custom document profiles; classified claims and clarification questions; claim-coverage ledger; source-first QA; revision/change-impact handling; Python validation scripts and GitHub Actions checks.</p>
+      <p><strong>Guardrails:</strong> unsupported claims are blocked, source quotations and hashes are checked by validators, and a structural PASS is not treated as publication approval. A human must verify technical behavior before release.</p>
+      <div class="project-links"><a href="https://github.com/AzariahOnyx/docforge-skills" target="_blank" rel="noopener noreferrer">Repository ↗</a><a href="https://github.com/AzariahOnyx/docforge-skills/blob/main/CASE-STUDY.md" target="_blank" rel="noopener noreferrer">Detailed case study ↗</a><a href="https://github.com/AzariahOnyx/docforge-skills/tree/main/output/quiet-hours-v2-live" target="_blank" rel="noopener noreferrer">Generated example ↗</a></div>
+    </article>
+    <article class="project-card">
+      <div class="cs-tag2">Knowledge quality · Retrieval evaluation</div>
+      <h3>EMETIVRA — Knowledge Intelligence Studio</h3>
+      <p>A local-first Markdown documentation auditing and reproducible keyword-retrieval benchmarking application. It helps compare how different chunking strategies and document structures affect ranked evidence for a fixed set of queries.</p>
+      <div class="architecture">
+        <svg viewBox="0 0 620 190" role="img" aria-label="EMETIVRA architecture: Markdown source, document audit and chunking, BM25 retrieval, manual judged evaluation, metrics and exports">
+          <defs><marker id="emarr" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#00C2A8" stroke-width="1"/></marker></defs>
+          <g fill="#0F1E35" stroke="#315071">
+            <rect x="8" y="56" width="105" height="62" rx="7"/><rect x="137" y="56" width="105" height="62" rx="7"/><rect x="266" y="56" width="105" height="62" rx="7"/><rect x="395" y="56" width="105" height="62" rx="7"/><rect x="524" y="56" width="88" height="62" rx="7"/>
+          </g>
+          <g font-family="JetBrains Mono,monospace" font-size="11" text-anchor="middle" fill="#E8EEF7">
+            <text x="60" y="82">Markdown</text><text x="60" y="98" fill="#8FA3C0" font-size="9">source</text>
+            <text x="189" y="82">Audit +</text><text x="189" y="98">chunking</text>
+            <text x="318" y="82">BM25</text><text x="318" y="98" fill="#8FA3C0" font-size="9">ranked evidence</text>
+            <text x="447" y="82">Judged</text><text x="447" y="98">evaluation</text>
+            <text x="568" y="82">Metrics</text><text x="568" y="98" fill="#8FA3C0" font-size="9">exports</text>
+          </g>
+          <g stroke="#00C2A8" stroke-width="1.5" marker-end="url(#emarr)"><path d="M114 87 H132"/><path d="M243 87 H261"/><path d="M372 87 H390"/><path d="M501 87 H519"/></g>
+          <text x="310" y="27" text-anchor="middle" fill="#00C2A8" font-family="JetBrains Mono,monospace" font-size="10">LOCAL-FIRST · NO MODEL CALLS · NO REMOTE DOCUMENT PROCESSING</text>
+          <text x="310" y="151" text-anchor="middle" fill="#8FA3C0" font-family="Inter,sans-serif" font-size="10">Fixed and heading-aware chunks · manually labelled relevance datasets</text>
+          <text x="310" y="168" text-anchor="middle" fill="#8FA3C0" font-family="Inter,sans-serif" font-size="10">P@3 · Recall@3 · Hit@3 · MRR@3 · nDCG@3</text>
+        </svg>
+      </div>
+      <p><strong>Workflow:</strong> audit a Markdown source, inspect recommendations, compare fixed and heading-aware chunks, annotate relevance manually, run a judged evaluation, inspect per-query ranked evidence, and export JSON/Markdown/CSV reports.</p>
+      <p><strong>Scientific limitations:</strong> the retrieval engine is lexical BM25, not semantic or LLM-based RAG. The included v1.1 case study uses a synthetic corpus and mechanically generated labels; it is illustrative, not independent human validation or proof of production retrieval accuracy.</p>
+      <div class="project-links"><a href="https://emetivra.vercel.app" target="_blank" rel="noopener noreferrer">Live application ↗</a><a href="https://github.com/AzariahOnyx/emetivra" target="_blank" rel="noopener noreferrer">Repository ↗</a><a href="https://github.com/AzariahOnyx/emetivra/blob/main/benchmarks/v1.1/CASE_STUDY.md" target="_blank" rel="noopener noreferrer">Benchmark method ↗</a></div>
+    </article>
+  </div>
+</section>
+<hr class="div"/>
+<!-- TECHNICAL WRITING SAMPLES -->
+<section id="writing-samples">
+  <div class="reveal">
+    <div class="eyebrow">Technical writing samples</div>
+    <h2 class="s-title">Enterprise products.<br/>Developer-focused documentation.</h2>
+    <p class="s-sub">Selected product documentation areas aligned with the products and content types covered in my work history.</p>
+  </div>
+  <div class="sample-grid stagger">
+    <article class="sample-card"><div class="cs-tag2">OpenText · Identity administration</div><h3>Directory &amp; Resource Administrator</h3><p>Administrator and user guidance, delegated administration, Active Directory workflows, REST services, and troubleshooting.</p><a href="https://www.microfocus.com/documentation/directory-and-resource-administrator/10.2/" target="_blank" rel="noopener noreferrer">View DRA documentation ↗</a></article>
+    <article class="sample-card"><div class="cs-tag2">OpenText · Security analytics</div><h3>Sentinel</h3><p>Security event monitoring, event collection, correlation, dashboards, incidents, and administration workflows.</p><a href="https://docs.microfocus.com/doc/SELM/24.4/c1_b122o79f" target="_blank" rel="noopener noreferrer">View Sentinel documentation ↗</a></article>
+    <article class="sample-card"><div class="cs-tag2">Contentstack · Personalization</div><h3>Personalize</h3><p>Product concepts and implementation guidance for experiences, audiences, variants, and real-time personalized content delivery.</p><a href="https://www.contentstack.com/docs/personalize" target="_blank" rel="noopener noreferrer">View Personalize documentation ↗</a></article>
+    <article class="sample-card"><div class="cs-tag2">Contentstack · Customer data</div><h3>Lytics</h3><p>Product overview and technical guidance for behavioral data collection, audience intelligence, product connections, and personalization activation.</p><a href="https://www.contentstack.com/docs/lytics" target="_blank" rel="noopener noreferrer">View Lytics documentation ↗</a></article>
+  </div>
+  <p class="sample-note">These links open public product documentation for reference. They are not presented as proof that every linked page was personally authored by me. Proprietary writing samples and internal screenshots are not reproduced here.</p>
+</section>
+<hr class="div"/>
 <!-- ══════════════════════════════════════════════════════ CONTACT -->
 <section id="contact">
   <div class="contact-glow"></div>
@@ -909,7 +999,7 @@ footer{padding:1.6rem 5vw;border-top:1px solid var(--border);display:flex;justif
     <p style="font-size:.975rem;color:var(--fg2);line-height:1.75;margin-top:.7rem">Looking for opportunities where documentation strategy, information architecture, and AI-enabled content systems are treated as product decisions — not afterthoughts.</p>
     <div class="contact-links">
       <a href="mailto:onyxajr@gmail.com" class="c-link primary">✉ onyxajr@gmail.com</a>
-      <a href="Azariah_Onyx_Resume.pdf" download="Azariah_Onyx_Resume.pdf" class="c-link resume-btn">↓ Download Resume</a>
+      <a href="resume.pdf" download="Azariah_Onyx_Resume.pdf" class="c-link resume-btn">↓ Download Resume</a>
       <a href="https://linkedin.com/in/onyx-aj" target="_blank" rel="noopener noreferrer" class="c-link">LinkedIn →</a>
       <a href="https://github.com/AzariahOnyx" target="_blank" rel="noopener noreferrer" class="c-link">GitHub →</a>
     </div>
