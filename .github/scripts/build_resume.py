@@ -18,8 +18,8 @@ styles.add(ParagraphStyle(name="Bodyx", parent=styles["BodyText"], fontName="Hel
 styles.add(ParagraphStyle(name="Bulletx", parent=styles["BodyText"], fontName="Helvetica", fontSize=7.9, leading=9.7, leftIndent=10, firstLineIndent=-7, textColor=colors.HexColor("#202938"), spaceAfter=2))
 def inline(s):
     s = escape(s)
-    s = re.sub(r"\\[([^\\]]+)\\]\\((https?://[^)]+|mailto:[^)]+)\\)", r'<link href="\\2" color="#0f4c81"><u>\\1</u></link>', s)
-    return re.sub(r"\\*\\*(.+?)\\*\\*", r"<b>\\1</b>", s)
+    s = re.sub(r"\[([^\]]+)\]\((https?://[^)]+|mailto:[^)]+)\)", r'<link href="\2" color="#0f4c81"><u>\1</u></link>', s)
+    return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", s)
 story=[]
 for raw in src.splitlines():
     line=raw.strip()
